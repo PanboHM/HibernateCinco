@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import es.jesushm.beans.Persona;
-import es.jesushm.DAOs.IPersonaDAO;
 import es.jesushm.persistence.HibernateUtil;
+import es.jesushm.DAOs.IGenericoDAO;
 
 /**
  *
@@ -39,7 +39,7 @@ public class Eleccion extends HttpServlet {
         HibernateUtil.buildSessionFactory();
         String url = null;
         DAOFactory daof = DAOFactory.getDAOFactory();
-        IPersonaDAO pdao = daof.getPersonaDAO();
+        IGenericoDAO<Persona> pdao = daof.getGenericoDAO();
         switch (request.getParameter("op")) {
             case "add":
                 url = "JSP/formularioAlta.jsp";
@@ -47,7 +47,7 @@ public class Eleccion extends HttpServlet {
             case "delete":
             case "update":
             case "list":
-                List<Persona> listaPersonas = pdao.get();
+                List<Persona> listaPersonas = pdao.selectAll(Persona.class);
                 request.setAttribute("listado", listaPersonas);
         }
         switch (request.getParameter("op")) {

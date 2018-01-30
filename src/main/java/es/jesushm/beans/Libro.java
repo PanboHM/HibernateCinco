@@ -20,13 +20,23 @@ public class Libro implements Serializable {
     private Long idLibro;
     @Column(length = 60, nullable = false)
     private String titulo;
+    private Long personaId;
 
     public Libro() {
     }
 
-    public Libro(Long idLibro, String titulo) {
+    public Libro(Long idLibro, String titulo, Long personaId) {
         this.idLibro = idLibro;
         this.titulo = titulo;
+        this.personaId = personaId;
+    }
+
+    public Long getPersonaId() {
+        return personaId;
+    }
+
+    public void setPersonaId(Long personaId) {
+        this.personaId = personaId;
     }
 
     public Long getIdLibro() {

@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import es.jesushm.beans.Persona;
 import es.jesushm.beans.Libro;
-import es.jesushm.DAOs.IPersonaDAO;
 import es.jesushm.persistence.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
+import es.jesushm.DAOs.IGenericoDAO;
 
 /**
  *
@@ -36,7 +36,7 @@ public class Controlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAOFactory daof = DAOFactory.getDAOFactory();
-        IPersonaDAO pdao = daof.getPersonaDAO();
+        IGenericoDAO<Persona> pdao = daof.getGenericoDAO();
         Persona persona = new Persona();
         List<Libro> libros = new ArrayList();
         Libro libro;
@@ -56,16 +56,16 @@ public class Controlador extends HttpServlet {
                     libros.add(libro);
                 }
                 persona.setLibros(libros);
-                pdao.add(persona);
+                pdao.insertOrUpdate(persona);
                 url = "index.html";
                 break;
             case "delete":
-                persona = pdao.getOne(Long.parseLong(request.getParameter("registro")));
+                persona = pdao.getById(Long.parseLong(request.getParameter("registro")), Persona.class);
                 pdao.delete(persona);
                 url = "index.html";
                 break;
             case "update":
-                persona = pdao.getOne(Long.parseLong(request.getParameter("registro")));
+                persona = pdao.getById(Long.parseLong(request.getParameter("registro")), Persona.class);
                 request.setAttribute("persona", persona);
                 url = "JSP/formularioActualizar.jsp";
                 break;

@@ -13,7 +13,7 @@ import javax.persistence.*;
  *
  * @author jesus
  */
-@Entity(name = "Persona")
+@Entity
 public class Persona implements Serializable {
 
     @Id
@@ -22,6 +22,7 @@ public class Persona implements Serializable {
     @Column(length = 50, nullable = false)
     private String nombre;
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "personaId")
     private List<Libro> libros;
 
     public Persona() {

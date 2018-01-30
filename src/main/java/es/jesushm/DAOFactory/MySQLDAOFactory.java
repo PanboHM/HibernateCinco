@@ -1,13 +1,13 @@
 package es.jesushm.DAOFactory;
 
-import es.jesushm.DAOs.PersonaDAO;
-import es.jesushm.DAOs.IPersonaDAO;
+import es.jesushm.DAOs.GenericoDAO;
+import es.jesushm.DAOs.IGenericoDAO;
 
 public class MySQLDAOFactory extends DAOFactory {
 
     @Override
-    public IPersonaDAO getPersonaDAO() {
-        return new PersonaDAO();
+    public IGenericoDAO getGenericoDAO() {
+        return new GenericoDAO();
     }
 
 //    @Override

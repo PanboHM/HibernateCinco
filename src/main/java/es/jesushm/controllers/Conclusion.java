@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import es.jesushm.beans.Persona;
 import es.jesushm.beans.Libro;
-import es.jesushm.DAOs.IPersonaDAO;
 import es.jesushm.persistence.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import es.jesushm.DAOs.IGenericoDAO;
 
 /**
  *
@@ -37,7 +37,7 @@ public class Conclusion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAOFactory daof = DAOFactory.getDAOFactory();
-        IPersonaDAO pdao = daof.getPersonaDAO();
+        IGenericoDAO<Persona> pDAO = daof.getGenericoDAO();
         Persona persona = new Persona();
         List<Libro> libros = new ArrayList();
         Libro libro;
@@ -61,7 +61,7 @@ public class Conclusion extends HttpServlet {
                     }
                 }
                 persona.setLibros(libros);
-                pdao.update(persona);
+                pDAO.insertOrUpdate(persona);
                 url = "index.html";
                 break;
         }

@@ -65,7 +65,7 @@ public class Conclusion extends HttpServlet {
                 url = "index.html";
                 break;
         }
-        HibernateUtil.closeSessionFactory();
+        HibernateUtil.closeSessionAndUnbindFromThread();
         request.getRequestDispatcher(url).forward(request, response);
     }
 

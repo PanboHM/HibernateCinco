@@ -12,20 +12,25 @@ public class GenericoDAO<T> implements IGenericoDAO<T> {
     private Session sesion;
 
     private void startTransaction() {
-        HibernateUtil.openSessionAndBindToThread();
+//        HibernateUtil.openSessionAndBindToThread();
         sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         sesion.getTransaction().begin();
+        System.out.println("Empezó una transacción");
     }
 
     private void endTransaction() {
-        if (sesion.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
+//        if (sesion.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
             sesion.getTransaction().commit();
-        }
-        HibernateUtil.closeSessionAndUnbindFromThread();
+            System.out.println("Se hizo un commit");
+//        }
+//        HibernateUtil.closeSessionAndUnbindFromThread();
     }
 
     private void handleExcepcion(HibernateException he) throws HibernateException {
-        sesion.getTransaction().rollback();
+//        if (sesion.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
+            sesion.getTransaction().rollback();
+            System.out.println("Se hizo un rollback");
+//        }
         throw he;
     }
 

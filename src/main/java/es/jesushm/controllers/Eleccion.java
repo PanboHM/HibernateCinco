@@ -36,7 +36,7 @@ public class Eleccion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HibernateUtil.buildSessionFactory();
+        HibernateUtil.openSessionAndBindToThread();
         String url = null;
         DAOFactory daof = DAOFactory.getDAOFactory();
         IGenericoDAO<Persona> pdao = daof.getGenericoDAO();

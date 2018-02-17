@@ -14,7 +14,6 @@
 
         <div id="principal">
             <h2>Listado</h2>
-
             <dl>
                 <c:forEach var="item" items="${listado}">
                     <dt>${item.nombre}</dt>
@@ -24,7 +23,7 @@
                 </c:forEach>
             </dl>
             <br />
-            <p><a href="${contexto}/" class="enlace">Men&uacute; inicial</a></p>
+            <p><a href="${contexto}/control?op=menu" class="enlace">Men&uacute; inicial</a></p>
         </div>
 
 

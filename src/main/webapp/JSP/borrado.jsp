@@ -15,7 +15,7 @@
         <div id="principal">
             <h2>Elige uno para eliminar</h2>
 
-            <form method="post" action="control?op=delete">
+            <form method="post" action="${contexto}/control?op=delete">
                 <table>
                     <c:forEach var="item" items="${listado}">
                         <tr>

@@ -14,7 +14,7 @@
 
         <div id="principal">
             <h2>Actualizaci&oacute;n de datos</h2>
-            <form method="post" action="control?op=add">
+            <form method="post" action="${contexto}/control?op=add">
                 <table>
                     <tr>
                         <td>Nombre</td>

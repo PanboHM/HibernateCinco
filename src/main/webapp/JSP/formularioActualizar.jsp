@@ -14,7 +14,7 @@
 
         <div id="principal">
             <h2>Actualizaci&oacute;n de datos</h2>
-            <form method="post" action="conclusion?op=update">
+            <form method="post" action="${contexto}/conclusion?op=update">
                 <table>
                     <tr>
                         <th colspan="2">Persona</th> 

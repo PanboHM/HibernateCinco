@@ -15,7 +15,7 @@
         <div id="principal">
             <h2>Elige uno para modificar</h2>
 
-            <form method="post" action="control?op=update">
+            <form method="post" action="${contexto}/control?op=update">
                 <table>
                     <c:forEach var="item" items="${listado}">
                         <tr>

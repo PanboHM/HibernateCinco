@@ -45,7 +45,7 @@ public class Controlador extends HttpServlet {
             case "add":
                 try {
                     BeanUtils.populate(persona, request.getParameterMap());
-
+                    
                 } catch (IllegalAccessException | InvocationTargetException ex) {
                     ex.printStackTrace();
                 }
@@ -69,9 +69,13 @@ public class Controlador extends HttpServlet {
                 request.setAttribute("persona", persona);
                 url = "JSP/formularioActualizar.jsp";
                 break;
+            case "menu":
+                url = "index.html";
+                break;
         }
         if (url.equals("index.html")) {
-            HibernateUtil.closeSessionFactory();
+            System.out.println("Se llamó al cierre de las sesión");
+            HibernateUtil.closeSessionAndUnbindFromThread();
         }
         request.getRequestDispatcher(url).forward(request, response);
     }

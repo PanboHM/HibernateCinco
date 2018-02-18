@@ -52,7 +52,6 @@ public class HibernateUtil {
     public static void closeSessionAndUnbindFromThread() {
 //        Session session = ThreadLocalSessionContext.unbind(sessionFactory);
         Session session = sessionFactory.getCurrentSession();
-//        Session session = sessionFactory.getCurrentSession();
         if (session != null) {
             session.close();
             System.out.println("La sesion se cerró");

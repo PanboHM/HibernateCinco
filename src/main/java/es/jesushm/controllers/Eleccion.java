@@ -19,6 +19,10 @@ import es.jesushm.persistence.HibernateUtil;
 import es.jesushm.DAOs.IGenericoDAO;
 
 /**
+ * Se llega siempre desde el index.html <br>
+ * Si hemos seleccionado añadir, irá directamente al formulario de alta. <br>
+ * Si hemos seleccionado cualquier otra opción, cargará una lista de Personas y
+ * luego se redirigirá a la página en cuestión.
  *
  * @author Jesus
  */
@@ -36,6 +40,7 @@ public class Eleccion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Abrimos una sesión hibernate para el usuario
         HibernateUtil.openSessionAndBindToThread();
         String url = null;
         DAOFactory daof = DAOFactory.getDAOFactory();

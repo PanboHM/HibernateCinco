@@ -19,6 +19,8 @@ import java.util.Map;
 import es.jesushm.DAOs.IGenericoDAO;
 
 /**
+ * A este servlet se llega únicamente cuando ya hemos modificado la Persona o
+ * libro/s, simplemente actualiza los valores en la base de datos y se guardan
  *
  * @author Jesus
  */
@@ -65,6 +67,7 @@ public class Conclusion extends HttpServlet {
                 url = "index.html";
                 break;
         }
+        //cerramos la sesión porque volvemos al index
         HibernateUtil.closeSessionAndUnbindFromThread();
         request.getRequestDispatcher(url).forward(request, response);
     }

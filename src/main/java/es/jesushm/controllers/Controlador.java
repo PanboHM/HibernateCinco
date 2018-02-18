@@ -18,7 +18,9 @@ import java.util.List;
 import es.jesushm.DAOs.IGenericoDAO;
 
 /**
- *
+ * Este es el controlador intermedio. <br>
+ * Excepto si se quiere actualizar algo, se vuelve al índice y por tanto se cierra la sesión
+ * 
  * @author Jesus
  */
 @WebServlet(name = "Controlador", urlPatterns = {"/control"})
@@ -74,6 +76,7 @@ public class Controlador extends HttpServlet {
                 break;
         }
         if (url.equals("index.html")) {
+            //vamos a volver al index, así que vamos a cerrar la sesión.
             System.out.println("Se llamó al cierre de las sesión");
             HibernateUtil.closeSessionAndUnbindFromThread();
         }

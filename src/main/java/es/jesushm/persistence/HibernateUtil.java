@@ -35,12 +35,12 @@ public class HibernateUtil {
         }
     }
 
-    public static void openSessionAndBindToThread() {
-        Session session = sessionFactory.openSession();
-        ThreadLocalSessionContext.bind(session);
-//        sessionFactory.openSession();
-        System.out.println("Se abrio una sesion");
-    }
+//    public static void openSessionAndBindToThread() {
+//        Session session = sessionFactory.openSession();
+//        ThreadLocalSessionContext.bind(session);
+////        sessionFactory.openSession();
+//        System.out.println("Se abrio una sesion");
+//    }
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
@@ -49,16 +49,16 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    public static void closeSessionAndUnbindFromThread() {
-//        Session session = ThreadLocalSessionContext.unbind(sessionFactory);
-        Session session = sessionFactory.getCurrentSession();
-        if (session != null) {
-            session.close();
-            System.out.println("La sesion se cerró");
-        } else {
-            System.out.println("La sesión estaba vacia");
-        }
-    }
+//    public static void closeSessionAndUnbindFromThread() {
+////        Session session = ThreadLocalSessionContext.unbind(sessionFactory);
+//        Session session = sessionFactory.getCurrentSession();
+//        if (session != null) {
+//            session.close();
+//            System.out.println("La sesion se cerró");
+//        } else {
+//            System.out.println("La sesión estaba vacia");
+//        }
+//    }
 
     public static void closeSessionFactory() {
         if ((sessionFactory != null) && (sessionFactory.isClosed() == false)) {

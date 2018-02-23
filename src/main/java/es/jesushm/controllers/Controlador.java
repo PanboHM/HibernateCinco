@@ -75,11 +75,11 @@ public class Controlador extends HttpServlet {
                 url = "index.html";
                 break;
         }
-        if (url.equals("index.html")) {
-            //vamos a volver al index, así que vamos a cerrar la sesión.
-            System.out.println("Se llamó al cierre de las sesión");
-            HibernateUtil.closeSessionAndUnbindFromThread();
-        }
+//        if (url.equals("index.html")) {
+//            //vamos a volver al index, así que vamos a cerrar la sesión.
+//            System.out.println("Se llamó al cierre de las sesión");
+//            HibernateUtil.closeSessionAndUnbindFromThread();
+//        }
         request.getRequestDispatcher(url).forward(request, response);
     }
 

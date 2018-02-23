@@ -68,7 +68,7 @@ public class Conclusion extends HttpServlet {
                 break;
         }
         //cerramos la sesión porque volvemos al index
-        HibernateUtil.closeSessionAndUnbindFromThread();
+//        HibernateUtil.closeSessionAndUnbindFromThread();
         request.getRequestDispatcher(url).forward(request, response);
     }
 

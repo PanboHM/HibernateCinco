@@ -14,7 +14,9 @@ public class GenericoDAO<T> implements IGenericoDAO<T> {
     private void startTransaction() {
 //        HibernateUtil.openSessionAndBindToThread();
         //Obtenemos la sesión que estará asociada al thread.
-        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+//        sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+//Abrimos sesión por transacción
+        sesion = HibernateUtil.getSessionFactory().openSession();
         sesion.getTransaction().begin();
         System.out.println("Empezó una transacción");
     }
@@ -25,6 +27,7 @@ public class GenericoDAO<T> implements IGenericoDAO<T> {
             System.out.println("Se hizo un commit");
         }
 //        HibernateUtil.closeSessionAndUnbindFromThread();
+        sesion.close();
     }
 
     private void handleExcepcion(HibernateException he) throws HibernateException {
